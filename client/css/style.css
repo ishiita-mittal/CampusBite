@@ -1,0 +1,345 @@
+/* ============================================================
+   CampusBite — Global Stylesheet
+   Complements Bootstrap 5.3. Keep overrides minimal and
+   use CSS custom properties so theming is straightforward.
+   ============================================================ */
+
+/* ── Custom Properties ─────────────────────────────────────── */
+:root {
+  --cb-primary:       #e65c00;   /* warm orange — brand accent   */
+  --cb-primary-dark:  #c14d00;
+  --cb-primary-light: #ff8c42;
+  --cb-secondary:     #2d6a4f;   /* deep green — secondary accent */
+  --cb-bg:            #fafaf8;   /* off-white page background     */
+  --cb-surface:       #ffffff;
+  --cb-border:        #e5e7eb;
+  --cb-text-muted:    #6b7280;
+  --cb-radius:        0.75rem;
+  --cb-shadow-sm:     0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+  --cb-shadow-md:     0 4px 6px -1px rgba(0,0,0,.08), 0 2px 4px -1px rgba(0,0,0,.06);
+  --cb-shadow-lg:     0 10px 15px -3px rgba(0,0,0,.08), 0 4px 6px -2px rgba(0,0,0,.05);
+  --cb-transition:    0.2s ease;
+}
+
+/* ── Base ───────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--cb-bg);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: #1f2937;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+
+a { color: var(--cb-primary); }
+a:hover { color: var(--cb-primary-dark); }
+
+/* ── Brand colours for Bootstrap overrides ──────────────────── */
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--cb-primary);
+  border-color: var(--cb-primary);
+  color: #fff;
+}
+.btn-primary:hover { background-color: var(--cb-primary-dark); border-color: var(--cb-primary-dark); }
+.btn-outline-primary { color: var(--cb-primary); border-color: var(--cb-primary); }
+.btn-outline-primary:hover { background-color: var(--cb-primary); border-color: var(--cb-primary); color: #fff; }
+
+.text-primary { color: var(--cb-primary) !important; }
+.bg-primary { background-color: var(--cb-primary) !important; }
+.border-primary { border-color: var(--cb-primary) !important; }
+
+/* ── Navbar ─────────────────────────────────────────────────── */
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--cb-primary) !important;
+  letter-spacing: -0.3px;
+}
+.navbar-brand span { color: var(--cb-secondary); }
+
+.navbar { border-bottom: 1px solid var(--cb-border); background: var(--cb-surface) !important; }
+
+.nav-link { color: #374151 !important; font-weight: 500; transition: color var(--cb-transition); }
+.nav-link:hover, .nav-link.active { color: var(--cb-primary) !important; }
+
+/* Cart badge */
+#cart-count {
+  font-size: 0.65rem;
+  min-width: 18px;
+  height: 18px;
+  line-height: 18px;
+  padding: 0 5px;
+  background: var(--cb-primary);
+}
+
+/* ── Hero Section ───────────────────────────────────────────── */
+.hero-section {
+  background: linear-gradient(135deg, #fff8f3 0%, #fef3e2 50%, #fff8f3 100%);
+  border-bottom: 1px solid var(--cb-border);
+  padding: 4rem 0;
+}
+
+.hero-section h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #111827;
+}
+
+.hero-section .highlight {
+  color: var(--cb-primary);
+}
+
+.hero-badge {
+  display: inline-block;
+  background: var(--cb-primary);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ── Section Headers ────────────────────────────────────────── */
+.section-header { margin-bottom: 1.75rem; }
+.section-header h2 { font-weight: 700; font-size: 1.6rem; color: #111827; }
+.section-divider {
+  width: 3rem;
+  height: 3px;
+  background: var(--cb-primary);
+  border-radius: 2px;
+  margin: 0.4rem 0 0;
+}
+
+/* ── Food / Menu Cards ──────────────────────────────────────── */
+.food-card {
+  background: var(--cb-surface);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  box-shadow: var(--cb-shadow-sm);
+  transition: transform var(--cb-transition), box-shadow var(--cb-transition);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.food-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--cb-shadow-md);
+}
+
+.food-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: #f3f4f6;
+}
+.food-card-img-placeholder {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #9ca3af;
+}
+
+.food-card-body {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.food-card-name { font-weight: 700; font-size: 1rem; color: #111827; margin-bottom: 0.25rem; }
+.food-card-desc { font-size: 0.85rem; color: var(--cb-text-muted); flex: 1; margin-bottom: 0.75rem; }
+.food-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; }
+.food-card-price { font-weight: 800; font-size: 1.1rem; color: var(--cb-primary); }
+
+/* Category badge */
+.badge-category {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.badge-Snacks    { background: #fef3c7; color: #92400e; }
+.badge-Meals     { background: #dcfce7; color: #14532d; }
+.badge-Beverages { background: #dbeafe; color: #1e3a8a; }
+.badge-Desserts  { background: #fce7f3; color: #831843; }
+
+/* Unavailable overlay */
+.food-card.unavailable { opacity: 0.65; }
+.badge-unavailable {
+  background: #fee2e2; color: #991b1b;
+  font-size: 0.7rem; font-weight: 600;
+  padding: 0.2rem 0.5rem; border-radius: 4px;
+}
+
+/* ── Cart ───────────────────────────────────────────────────── */
+.cart-item {
+  border-bottom: 1px solid var(--cb-border);
+  padding: 0.75rem 0;
+}
+.cart-item:last-child { border-bottom: none; }
+.cart-item-name { font-weight: 600; font-size: 0.95rem; }
+.cart-item-price { color: var(--cb-text-muted); font-size: 0.85rem; }
+.qty-btn {
+  width: 28px; height: 28px;
+  padding: 0; line-height: 1;
+  font-size: 1rem;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.qty-display { min-width: 28px; text-align: center; font-weight: 700; }
+
+.cart-summary-box {
+  background: #fff8f3;
+  border: 1px solid #fddbb4;
+  border-radius: var(--cb-radius);
+  padding: 1.25rem;
+}
+
+/* ── Order Status Badges ────────────────────────────────────── */
+.status-badge {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-weight: 600; font-size: 0.8rem;
+  text-transform: uppercase; letter-spacing: 0.4px;
+}
+.status-Placed     { background: #dbeafe; color: #1e40af; }
+.status-Preparing  { background: #fef3c7; color: #92400e; }
+.status-Ready      { background: #dcfce7; color: #15803d; }
+.status-Completed  { background: #f0fdf4; color: #14532d; }
+.status-Cancelled  { background: #fee2e2; color: #991b1b; }
+
+/* Order timeline */
+.order-timeline { display: flex; align-items: center; gap: 0; flex-wrap: nowrap; }
+.timeline-step {
+  display: flex; flex-direction: column; align-items: center;
+  flex: 1; text-align: center;
+  font-size: 0.72rem; color: var(--cb-text-muted); font-weight: 500;
+}
+.timeline-dot {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: #e5e7eb; color: #9ca3af;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; margin-bottom: 0.35rem;
+  transition: all var(--cb-transition);
+}
+.timeline-dot.active { background: var(--cb-primary); color: #fff; }
+.timeline-dot.done   { background: var(--cb-secondary); color: #fff; }
+.timeline-connector {
+  flex: 1; height: 2px; background: #e5e7eb; margin-bottom: 1.4rem;
+  transition: background var(--cb-transition);
+}
+.timeline-connector.done { background: var(--cb-secondary); }
+
+/* ── Admin Dashboard ────────────────────────────────────────── */
+.admin-sidebar {
+  min-height: calc(100vh - 56px);
+  background: #1f2937;
+  color: #d1d5db;
+  width: 230px;
+  flex-shrink: 0;
+}
+.admin-sidebar .nav-link {
+  color: #9ca3af !important;
+  padding: 0.6rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: all var(--cb-transition);
+}
+.admin-sidebar .nav-link:hover,
+.admin-sidebar .nav-link.active { background: rgba(255,255,255,.08); color: #fff !important; }
+.admin-sidebar .nav-link i { width: 20px; }
+
+.admin-content { flex: 1; min-width: 0; padding: 1.5rem; }
+
+.metric-card {
+  background: var(--cb-surface);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--cb-shadow-sm);
+}
+.metric-card .metric-value { font-size: 2rem; font-weight: 800; color: var(--cb-primary); }
+.metric-card .metric-label { font-size: 0.82rem; color: var(--cb-text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.4px; }
+
+/* ── Forms ──────────────────────────────────────────────────── */
+.form-control:focus, .form-select:focus {
+  border-color: var(--cb-primary);
+  box-shadow: 0 0 0 0.2rem rgba(230,92,0,.15);
+}
+
+/* ── Loading / Empty / Error States ────────────────────────── */
+.state-container {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 4rem 2rem; text-align: center; color: var(--cb-text-muted);
+}
+.state-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.5; }
+.state-title { font-size: 1.15rem; font-weight: 600; color: #374151; margin-bottom: 0.4rem; }
+.state-desc  { font-size: 0.9rem; }
+
+.spinner-orange { color: var(--cb-primary); }
+
+/* ── Toasts ─────────────────────────────────────────────────── */
+.toast-success { border-left: 4px solid #22c55e; }
+.toast-error   { border-left: 4px solid #ef4444; }
+.toast-info    { border-left: 4px solid var(--cb-primary); }
+
+/* ── Filter Bar ─────────────────────────────────────────────── */
+.filter-bar {
+  background: var(--cb-surface);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--cb-shadow-sm);
+  margin-bottom: 1.5rem;
+}
+
+/* ── Tables ─────────────────────────────────────────────────── */
+.table-card {
+  background: var(--cb-surface);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  overflow: hidden;
+  box-shadow: var(--cb-shadow-sm);
+}
+.table { margin: 0; font-size: 0.9rem; }
+.table th { background: #f9fafb; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.4px; color: var(--cb-text-muted); border-bottom: 1px solid var(--cb-border); }
+
+/* ── Footer ─────────────────────────────────────────────────── */
+footer {
+  background: #1f2937;
+  color: #9ca3af;
+  font-size: 0.85rem;
+  padding: 1.25rem 0;
+  margin-top: auto;
+}
+footer a { color: var(--cb-primary-light); }
+
+/* ── Responsive tweaks ──────────────────────────────────────── */
+@media (max-width: 767.98px) {
+  .hero-section { padding: 2.5rem 0; }
+  .admin-sidebar { width: 100%; min-height: auto; }
+  .order-timeline { flex-wrap: wrap; gap: 0.5rem; }
+  .timeline-connector { display: none; }
+}
+
+@media (max-width: 575.98px) {
+  .food-card-footer { flex-direction: column; align-items: flex-start; }
+}

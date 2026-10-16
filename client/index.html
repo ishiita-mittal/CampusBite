@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusBite — Campus Cafeteria Food Ordering</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ── Navigation ─────────────────────────────────────────────── -->
+<nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">🍽️ Campus<span>Bite</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="index.html"><i class="bi bi-house me-1"></i>Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="menu.html"><i class="bi bi-grid me-1"></i>Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="track-order.html"><i class="bi bi-search me-1"></i>Track Order</a></li>
+        <li class="nav-item"><a class="nav-link" href="orders.html"><i class="bi bi-clock-history me-1"></i>My Orders</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-3">
+        <a href="checkout.html" class="btn btn-primary position-relative">
+          <i class="bi bi-cart3 me-1"></i>Cart
+          <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill d-none">0</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Hero ───────────────────────────────────────────────────── -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center gy-4">
+      <div class="col-lg-6">
+        <span class="hero-badge mb-3 d-inline-block"><i class="bi bi-lightning-fill me-1"></i>Fast Campus Ordering</span>
+        <h1>Order fresh food from your <span class="highlight">campus cafeteria</span></h1>
+        <p class="lead text-muted mt-3 mb-4">Browse the menu, add items to your cart, and pick up your order when it's ready — all from your browser.</p>
+        <div class="d-flex flex-wrap gap-2">
+          <a href="menu.html" class="btn btn-primary btn-lg px-4">
+            <i class="bi bi-grid me-2"></i>Browse Menu
+          </a>
+          <a href="track-order.html" class="btn btn-outline-secondary btn-lg px-4">
+            <i class="bi bi-search me-2"></i>Track Order
+          </a>
+        </div>
+        <p class="text-muted mt-3 small"><i class="bi bi-info-circle me-1"></i>This is a simulated ordering system. No payment is processed.</p>
+      </div>
+      <div class="col-lg-6 d-none d-lg-block text-center">
+        <div style="font-size:9rem; line-height:1; filter:drop-shadow(0 8px 24px rgba(0,0,0,.12));">🍱</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Features ───────────────────────────────────────────────── -->
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-3 col-6 text-center">
+        <div class="p-3">
+          <div style="font-size:2.5rem;" class="mb-2">🧾</div>
+          <h6 class="fw-bold">Browse Menu</h6>
+          <p class="text-muted small mb-0">Filter by category, search by name, check availability.</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 text-center">
+        <div class="p-3">
+          <div style="font-size:2.5rem;" class="mb-2">🛒</div>
+          <h6 class="fw-bold">Add to Cart</h6>
+          <p class="text-muted small mb-0">Your cart is saved locally so it persists between pages.</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 text-center">
+        <div class="p-3">
+          <div style="font-size:2.5rem;" class="mb-2">✅</div>
+          <h6 class="fw-bold">Place Order</h6>
+          <p class="text-muted small mb-0">Enter your name and an optional pickup note, then submit.</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 text-center">
+        <div class="p-3">
+          <div style="font-size:2.5rem;" class="mb-2">🔍</div>
+          <h6 class="fw-bold">Track Status</h6>
+          <p class="text-muted small mb-0">Use your order number to follow: Placed → Preparing → Ready.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Featured Items ──────────────────────────────────────────── -->
+<section class="py-4 bg-light">
+  <div class="container">
+    <div class="section-header">
+      <h2>Today's Highlights</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div id="featured-items" class="row g-3">
+      <!-- Populated by api.js -->
+      <div class="col-12 text-center py-4">
+        <div class="spinner-border spinner-orange" role="status"><span class="visually-hidden">Loading...</span></div>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="menu.html" class="btn btn-outline-primary">View Full Menu <i class="bi bi-arrow-right ms-1"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────── -->
+<footer class="py-3 mt-auto">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center">
+    <span>🍽️ <strong>CampusBite</strong> &mdash; Campus Food Ordering System</span>
+    <span class="text-muted small">Simulated demo &mdash; no real payments</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/api.js"></script>
+<script>
+  // Load a small set of featured items on the homepage
+  async function loadFeatured() {
+    const container = document.getElementById('featured-items');
+    try {
+      const data = await apiGet('/api/menu?available=true');
+      const items = (data.data || []).slice(0, 4);
+      if (items.length === 0) {
+        container.innerHTML = '<div class="col-12 text-center text-muted py-4">No items available right now.</div>';
+        return;
+      }
+      container.innerHTML = items.map(item => buildFeaturedCard(item)).join('');
+      // Attach add-to-cart handlers
+      container.querySelectorAll('.btn-add-cart').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id    = parseInt(btn.dataset.id);
+          const name  = btn.dataset.name;
+          const price = parseInt(btn.dataset.price);
+          Cart.add({ id, name, price_paise: price });
+          showToast(`"${name}" added to cart!`);
+        });
+      });
+    } catch (err) {
+      container.innerHTML = '<div class="col-12 text-center text-muted py-4"><i class="bi bi-wifi-off me-2"></i>Could not load menu. Is the server running?</div>';
+    }
+  }
+
+  function buildFeaturedCard(item) {
+    const price = (item.price_paise / 100).toFixed(2);
+    const img   = item.image_url
+      ? `<img src="${item.image_url}" class="food-card-img" alt="${item.name}" onerror="this.parentElement.innerHTML='<div class=food-card-img-placeholder>🍽️</div>'">`
+      : `<div class="food-card-img-placeholder">🍽️</div>`;
+    return `
+      <div class="col-sm-6 col-lg-3">
+        <div class="food-card">
+          ${img}
+          <div class="food-card-body">
+            <div class="mb-1"><span class="badge-category badge-${item.category}">${item.category}</span></div>
+            <div class="food-card-name">${item.name}</div>
+            <div class="food-card-desc">${item.description || ''}</div>
+            <div class="food-card-footer">
+              <span class="food-card-price">₹${price}</span>
+              <button class="btn btn-primary btn-sm btn-add-cart"
+                data-id="${item.id}" data-name="${item.name}" data-price="${item.price_paise}">
+                <i class="bi bi-cart-plus me-1"></i>Add
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function showToast(msg) {
+    const t = document.createElement('div');
+    t.className = 'position-fixed bottom-0 end-0 m-3 p-3 bg-white border rounded shadow toast-success';
+    t.style.cssText = 'z-index:9999;min-width:200px;font-weight:500';
+    t.innerHTML = `<i class="bi bi-check-circle-fill text-success me-2"></i>${msg}`;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 2500);
+  }
+
+  loadFeatured();
+  Cart.updateBadge();
+</script>
+</body>
+</html>
